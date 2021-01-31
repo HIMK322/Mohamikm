@@ -44,7 +44,7 @@ def index():
     """
     
     result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
-    return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws")
+    return render_template("index",len= len(result), result=result , head="القانون العراقي", link="laws")
 
 
 @app.route("/register", methods=["GET", "POST"])
