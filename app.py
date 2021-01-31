@@ -27,8 +27,11 @@ Session(app)
 # selecting the data base
 db = SQL("sqlite:///lawyers.db")
 
-
 @app.route("/")
+def shit():
+    return render_template("home.html")
+
+@app.route("/s")
 def index():
     result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
     return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws")
