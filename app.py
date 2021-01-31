@@ -27,12 +27,22 @@ Session(app)
 # selecting the data base
 db = SQL("sqlite:///lawyers.db")
 
-@app.route("/")
-def shit():
-    return render_template("home.html")
 
-@app.route("/s")
+@app.route("/")
 def index():
+
+    """
+    db.execute("SELECT lawyer_id FROM review ORDER BY  SUM(review), COUNT(review)  DESC LIMIT 9 ")
+    db.execute("SELECT name, picture, city, years of experince, specialization FORM lawyers WHERE verfied = 1 AND  ")
+        rating_list=[]
+    result = db.execute("SELECT name, picture, id FROM lawyers WHERE verfied = 1  ")
+    for i in range(len(result)):
+        ratings= db.execute("SELECT SUM(review), COUNT(review) FROM review WHERE lawyer_id = ? ", result[i]["id"])
+        a={"sum" : ratings[0]["SUM(review)"] / ratings[0]["COUNT(review)"],
+        "count" : ratings[0]["COUNT(review)"]}
+        rating_list.append(a)
+    """
+    
     result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
     return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws")
 
