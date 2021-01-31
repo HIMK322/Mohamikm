@@ -44,7 +44,7 @@ def index():
     """
     
     result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
-    return render_template("index",len= len(result), result=result , head="القانون العراقي", link="laws")
+    return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -78,7 +78,8 @@ def register():
             error= "البريد الاكتروني مستخدب بالفعل"
 
         # checking for valid input from the city selector
-        elif city not in  citys:
+        elif city not in citys:
+            print("shiiiiiiiiiiiiiiiiiiit")
             error = "المحافظة غير موجودة"
 
         #insert the new lawyer

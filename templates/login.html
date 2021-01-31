@@ -5,56 +5,47 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300&display=swap" rel="stylesheet">
 	<title>تسجيل الدخول</title>
 </head>
 
 <body>
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
-			<form method="POST" enctype="multipart/form-data" action="/register">
+			<form  method="POST" enctype="multipart/form-data" action="/register">
 				<h1>انشاء حساب</h1>
-				<input type="text" name="name" placeholder="الاسم" />
-				<input type="email" name="email" placeholder="الايميل" />
-				{% if error== "البريد الاكتروني مستخدب بالفعل" %}
-				<p> {{ error }}</p>
-				{% endif %}
-				<input type="tel" name="number" placeholder="رقم الهاتف" />
-				<input type="password" name="password" placeholder="كلمة المرور" />
-				<label for="city">اختار محافظتك</label>
-				<select name="city" id="city">
-				  <option value= "بغداد"> بغداد </option>
-				  <option value= "بصرة"> بصرة </option>
-				  <option value= "بابل"> بابل </option>
-				  <option value= "كركوك"> كركوك </option>
-				</select> 
+				<input type="text" name="name" placeholder="الاسم" required>
+				<input type="email" name="email" placeholder="الايميل" required>
+				<input type="password" name="password" placeholder="كلمة المرور" required>
+				<input type="tel" name="number" placeholder="رقم الهاتف" required>
+				<div class="upload-img">
+					<input type="file" name="pic"  id="file-input1" required>
+					<label for="file-input1" aria-required="true">📥 صورتك الشخصية</label>
+	
+					<input type="file" name="license" id="file-input2" required>
+					<label for="file-input2">📥 صورة رخصة النقابة</label>
+				</div>
 
-				<input type="file"  name="pic"  id="good" accept="image/*">
-				<label for="good">صورتك الشخصية</label>
+				<div class="select-wrapper">
+					<select name="city" id="city">
+						<option value= "بغداد"> بغداد </option>
+						<option value= "بصرة"> بصرة </option>
+						<option value= "بابل"> بابل </option>
+						<option value= "كركوك"> كركوك </option>
+					</select>
 
-				<input type="file"  name="license" id="bad" accept="image/*">
-				<label for="bad">صورة رخصة النقابة</label>
-				{% if error== "صيغة الصورة غير مقبولة" %}
-				<p> {{ error }}</p>
-				{% endif %}
-				<button>تسجيل</button>
+					<label>اختر محافظتك</label>
+				</div>
+				<button class="button">تسجيل</button>
 			</form>
 		</div>
 		<div class="form-container sign-in-container">
 			<form method="POST" action="/login">
 				<h1>تسجيل الدخول</h1>
-
-				<input type="email" name="email" placeholder="الايميل" />
-				{% if error == "البريد الالكتروني غير صحيح" %}
-				<p> {{ error }}</p>
-				{% endif %}
-
-				<input type="password" name="password" placeholder="كلمة المرور" />
-				{% if error ==  "الرمز السري غير صحيح" %}
-				<p> {{ error }}</p>
-				{% endif %}
-
+				<input type="email"  name="email" placeholder="الايميل" required>
+				<input type="password"  name="password" placeholder="كلمة المرور" required>
 				<a href="#">هل نسيت كلمة المرور؟</a>
-				<button>تسجيل الدخول</button>
+				<button class="button">تسجيل الدخول</button>
 			</form>
 		</div>
 		<div class="overlay-container">
@@ -63,12 +54,12 @@
 					<h1>! مرحبا بك من جديد</h1>
 					<p style="font-size: 1.3rem;">للبقاء على اتصال معنا ، يرجى تسجيل الدخول باستخدام معلوماتك الشخصية
 					</p>
-					<button class="ghost" id="signIn">تسجيل الدخول</button>
+					<button class="ghost button" id="signIn">تسجيل الدخول</button>
 				</div>
 				<div class="overlay-panel overlay-right">
 					<h1>! مرحبا</h1>
 					<p style="font-size: 1.3rem;">أدخل بياناتك الشخصية وابدأ الرحلة معنا</p>
-					<button class="ghost" id="signUp">تسجيل</button>
+					<button class="ghost button" id="signUp">تسجيل</button>
 				</div>
 			</div>
 		</div>

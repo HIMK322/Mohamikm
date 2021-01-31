@@ -3,6 +3,7 @@
 
 * {
 	box-sizing: border-box;
+    font-family: 'Lemonada', cursive;
 }
 
 body {
@@ -13,7 +14,7 @@ body {
 	flex-direction: column;
 	font-family: 'Amiri', sans-serif;
 	height: 100vh;
-	margin: -20px 0 50px;
+	margin: 0px;
 	font-size: 1.6rem;
 }
 
@@ -50,10 +51,10 @@ a {
 	margin: 15px 0;
 }
 
-button {
-	border-radius: 0px;
-	border: 1px solid #0f5561;
-	background-color: #0f5561;
+.button {
+	border-radius: 50px;
+	border: 1px solid #17a5c9;
+	background-color: #17a5c9;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -64,15 +65,15 @@ button {
 	margin: 2rem 0rem;
 }
 
-button:active {
+.button:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+.button:focus {
 	outline: none;
 }
 
-button.ghost {
+.button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
@@ -95,15 +96,26 @@ input {
 	margin: 0.7rem 0;
 	width: 100%;
 	text-align: right;
+	border-radius: 50px;
 	font-size: 1.1rem;
 }
 
-input#file-input
+input#file-input1
 {
 	display: none;
 }
 
-input#file-input + label
+input#file-input2
+{
+	display: none;
+}
+
+.upload-img
+{
+	display: flex;
+}
+
+input.file-input1 + label
 {
 
 	background-color: #eee;
@@ -114,6 +126,35 @@ input#file-input + label
 	text-align: right;
 	font-size: 1.1rem;
 }
+
+label
+{
+	margin: 2rem 2rem !important;
+	font-size: 1rem;
+}
+
+input.file-inpu2 + label
+{
+
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 0.7rem 0;
+	width: 100%;
+	text-align: right;
+	font-size: 1.1rem;
+}
+
+select
+{
+	width: 15rem;
+	font-size: 1rem;
+	margin: 2rem 0;
+	background: #eee;
+	direction: rtl;
+	border-radius: 50px;
+}
+
 
 .form-container {
 	position: absolute;
@@ -174,8 +215,8 @@ input#file-input + label
 }
 
 .overlay {
-	background: -webkit-linear-gradient(to right, #0e0e0e, #0f5561);
-	background: linear-gradient(to right, #0e0e0e, #0f5561);
+	background: -webkit-linear-gradient(to right, #1e5799,#16c9f6);
+	background: linear-gradient(to right, #1e5799,#16c9f6);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
