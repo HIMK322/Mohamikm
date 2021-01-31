@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامين</title>
+    <link rel="stylesheet" href="/static/lawy-srch.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- here is nav bar-->
+    <header>
+        <div class="container">
+            <nav class="flex items-center justify-between">
+                <div class="right">
+                    <form method="GET" action="/login">
+                        <button class="btn-btn btn-secondary">تسجيل الدخول</button>
+                    </form>
+                    <div class="menu">
+                        <div class="b-menu"></div>
+                        <div class="b-menu"></div>
+                        <div class="b-menu"></div>
+                    </div>
+                </div>
+                <div class=" left flex items-center">
+                    <div class="nav-link">
+                        <a href="http://127.0.0.1:5000/">الصفحة الرئيسية</a>
+                        <a href="http://127.0.0.1:5000/lawyers-search?">المحامين</a>
+                        <a href="http://127.0.0.1:5000//laws">القانون العراقي </a>
+                        <a href="#">خدماتنا</a>
+                        <div class="btn-sidebar">
+                            <button class="btn-btn btn-secondary">تسجيل الدخول</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="image">
+                    <h1>محاميك</h1>
+                    <img src="static/img//book-1.png" style="width: 4rem;" alt="">
+                </div>
+            </nav>
+        </div>
+        <!-- Big Image here and search section-->
+        <div class="hero items-center">
+            <div class="right">
+                <h1 style="text-align: center;">ابحث عن المحامي المطلوب</h1>
+            </div>
+            <form method="POST" action="/lawyers-search">
+                <div class="search-main">
+                    <input type="text" name="Search" placeholder="اسم المحامي">
+                    <label for="city">اختار محافظتك</label>
+                    <select name="city" id="city">
+                        <option value="all" >الجميع</option>
+                        <option value= "بغداد"> بغداد </option>
+                        <option value= "بصرة"> بصرة </option>
+                        <option value= "بابل"> بابل </option>
+                        <option value= "كركوك"> كركوك </option>
+                    </select> 
+                    <label for="spec">اختار نوع المحامي</label>
+                    <select name="spec" id="spac">
+                        <option value="0" >الجميع</option>
+                        <option value="1" >محامي احوال شخصية</option>
+                        <option value="2" >محامي بدائة</option>
+                        <option value="3" >محامي جنايات</option>
+                    </select> 
+                    <button class="bbtn">ابحث</button>
+                </div>
+            </form>
+        </div>
+    </header>
+
+
+   
+    <!--Cards section is here-->
+    <section class="cards">
+        <div class="container">
+            <h1>افضل 5 محامين لهذا الشهر</h1>
+            <div class="card-wrapper">
+                <div class="card">
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <img src="static/img//how-to-write-a-profile.jpg" alt="">
+                        <h3>lawyer name</h3>
+                    </div>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="modal">
+        <img src="static/img//how-to-write-a-profile.jpg" alt="">
+        <div class="close"></div>
+    </div>
+
+    <div class="modal-container">
+
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="hamburger-menu">
+                    <div class="center"></div>
+                </div>
+                <a href="#" class="mail">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <div class="main">
+                    <div class="image">
+                        <div class="hover">
+                            <i class="fas fa-camera fa-2x"></i>
+                        </div>
+                    </div>
+                    <h3 class="name">John Doe</h3>
+                    <h3 class="sub-name">@J_Doe</h3>
+                </div>
+            </div>
+
+            <div class="modle-content">
+                <div class="left">
+                    <div class="about-container">
+                        <h3 class="title">عن المحامي</h3>
+                        <p class="text">بعض المعلومات الاخرى عن المحامي</p>
+                    </div>
+
+                    <div class="buttons-wrap">
+                        <div class="follow-wrap">
+                            <a href="#" class="follow">متابعة</a>
+                        </div>
+                        <div class="share-wrap">
+                            <a href="#" class="share">تواصل معه</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+    <!--Footer section is here-->
+    <footer>
+        <img class="footer-logo" src="https://www.iconsdb.com/icons/preview/color/3DCFD3/book-16-xxl.png"
+            style="width: 4rem;" alt="">
+        <h3 class="footer-h3" style="text-transform: uppercase;">محاميك</h3>
+        <div class="footer-social">
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/instagram-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/twitter-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/facebook-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/snapchat-2-xxl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/google-plus-xxl.png" alt=""></a>
+        </div>
+        <div class="Copyright">
+            Copyright 2021 @ name LAWYERS. All Right Reserved.
+        </div>
+    </footer>
+
+    <script src="/static/lawy-srch.js"></script>
+</body>
+
+</html>

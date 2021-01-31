@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع محاميك</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- here is nav bar-->
+    <header>
+        <div class="container">
+            <nav class="flex items-center justify-between">
+                <div class="right">
+                    <form method="GET" action="/login">
+                        <button class="btn-btn btn-secondary">تسجيل الدخول</button>
+                    </form>
+                    <div class="menu">
+                        <div class="b-menu"></div>
+                        <div class="b-menu"></div>
+                        <div class="b-menu"></div>
+                    </div>
+                </div>
+                <div class=" left flex items-center">
+                    <div class="nav-link">
+                        <a href="http://127.0.0.1:5000/">الصفحة الرئيسية</a>
+                        <a href="http://127.0.0.1:5000/lawyers-search?">المحامين</a>
+                        <a href="http://127.0.0.1:5000//laws">القانون العراقي </a>
+                        <a href="#">خدماتنا</a>
+                        <div class="btn-sidebar">
+                            <form method="GET" action="/login">
+                                <button class="btn-btn btn-secondary">تسجيل الدخول</button>
+                            </form>                        
+                        </div>
+                    </div>
+                </div>
+                <div class="image">
+                    <h1>محاميك</h1>
+                    <img src="/static/img/book-1.png" style="width: 4rem;" alt="">
+                </div>
+            </nav>
+
+            <!-- Big Image here and search section-->
+            <div class="hero flex items-center">
+                <div class="left">
+                    <img src="/static/img/scales.png" alt="">
+                </div>
+                <div class="right">
+                    <h1>ابحث عن المحامي المناسب</h1>
+                    <p>موقع ( محاميك ) يجعل من السهل عليك العثور على محامين باستخدام </br>
+                        التخصص المطلوب والمشورة القانونية</p>
+                    <a href="#" style="text-decoration: none;">
+                        <p class="print"> <span>قرارات</span> محاكم التمييز -</p>
+                    </a>
+                    <form method="GET" action="/lawyers-search" class="input3">
+                        <button class="btn btn-secondary">بحث</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!--About section is here-->
+    <section class="about">
+        <div class="container flex items-center justify-between">
+            <div class="flex-1">
+                <img class="about-img" src="/static/img/paper-xxl.png" alt="">
+            </div>
+            <div class="flex-1">
+                <h1>مرحبا بك في موقعنا</h1>
+                <h3>هنا بعض المعلومات عنا</h3>
+                <p>كل شيء نسبي في الحياة ، ومهما ساءت الأمور فليست شرا كلها ، ولن تجد الناس جميعا يجمعون على أمر واحد ،
+                    خاصة إذا تعلق الأمر بالفنون التعبيرية ودورها في تثقيف الإنسان والتعبير عن قضاياه ، ومن هذه الفنون
+                    الأدب والسينما . فما العلاقة بينهما</p>
+                <div class="social">
+                    <a class="a2" href="#"><img src="https://www.iconsdb.com/icons/preview/white/twitter-xl.png"
+                            alt=""></a>
+                    <a class="a1" href="#"><img src="https://www.iconsdb.com/icons/preview/white/instagram-xl.png"
+                            alt=""></a>
+                    <a class="a3" href="#"><img src="https://www.iconsdb.com/icons/preview/white/facebook-xl.png"
+                            alt=""></a>
+                    <a class="a4" href="#"><img src="https://www.iconsdb.com/icons/preview/white/snapchat-2-xxl.png"
+                            alt=""></a>
+                    <a class="a5" href="#"><img src="https://www.iconsdb.com/icons/preview/white/google-plus-xxl.png"
+                            alt=""></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Cards section is here-->
+    <section class="cards">
+        <div class="container">
+            <h1 class="section-heading"><span>الدستور</span></h1>
+            <p>ستجد هنا بعض القوانين التي ستحتاجها و اكثر </p>
+            <div class="card-wrapper">
+                <div class="card">
+                    <h2>قانون المدني</h2>
+                    <p>قانون المدني هو أحد أهم فروع القانون الخاص الذي ينظم العلاقات التي تنشأ بين أشخاص لا يعمل أيهم بصفته صاحب سيادة . والقانون المدني هو القانون الذي ينظم الروابط القانونية المالية _ فيما عدا ما يتعلق منها بالتجارة _ والشخصية الخاصة بعلاقات الأفراد بعضهم وبعض . وهو بهذا التعريف ينظم نوعين من العلاقات الخاصة للأفراد : المعاملات المالية، والأحوال الشخصية . ,</p>
+                </div>
+
+                <div class="card">
+                    <h2>قانون العمل</h2>
+                    <p>قانون العمل هو مجموعة القواعد التي تنظم العلاقات الناشئة بمناسبة قيام شخص بالعمل لحساب آخر. وهو فرع من فروع القانون الخاص المعنى بتنظيم علاقات الأفراد بعضها البعض . </p>
+                </div>
+
+                <div class="card">
+                    <h2>قانون العقوبات</h2>
+                    <p> قانون ينظم كيفية معاقبة كل من خالف قاعدة قانونية وفرض العقوبة القانونية عليه وتحديد الافعال المباحة والمحرمة ويوجب لكل جريمة جزاء</p>
+                </div>
+
+                <div class="card">
+                    <h2>قانون الشركات</h2>
+                    <p>هو قانون مختص بالشركات، والقواعد التي تؤسسها وتنظم مسؤولياتها وحقوقها وواجباتها. وهي تنظم كيفية تفاعل الشركات والمستثمرين والمساهمين والمديرين والموظفين والدائنين وغيرهم من أصحاب المصلحة مثل المستهلكين والمجتمع والبيئة مع بعضهم البعض.</p>
+                </div>
+
+                <div class="card">
+                    <h2>قانون الاحوال الشخصية</h2>
+                    <p>قانون الأحوال الشخصية هو مجموعة القواعد القانونية التي تنظم علاقة الأفراد فيما بينهم من حيث صلة النسب والزواج وما ينشأ عنه من مصاهرة وولادة وولاية وحضانة وحقوق وواجبات متبادلة وما قد يعتريها من انحلال تترتب عليه حقوق في النفقة والحضانة والإرث والوصية</p>
+                </div>
+
+                <div class="card">
+                    <h2>قانون الاثبات</h2>
+                    <p>يطبق هذا القانون على الإثبات في المعاملات والمسائل الجنائية.هو متعلِّق بالعديد من الملابسات التي قد يستدلّ منها القاضي أو هيئة المحلِّفين على حقيقة الواقعة التي هي موضع الجدل </p>
+                </div>
+                <p></p>
+                <button onclick= "document.location='http://127.0.0.1:5000//laws'" class="btn btn-primary">للمزيد</button>
+            </div>
+        </div>
+    </section>
+
+    <!--Contact Us section is here-->
+    <section class="contact">
+        <div class="container">
+            <h1 class="section-heading">تواصل <span>معنا</span></h1>
+            <p>كل شيء نسبي في الحياة</p>
+            <div class="card-wrapper">
+                <div class="card">
+                    <img class="cimg" src="https://www.iconsdb.com/icons/preview/black/mobile-phone-8-xxl.png" alt="">
+                    <h1>اتصل بنا على</h1>
+                    <h6>+964 771 999 666</h6>
+                </div>
+
+                <div class="card">
+                    <img class="cimg" src="https://www.iconsdb.com/icons/preview/black/email-5-xxl.png" alt="">
+                    <h1>راسلنا على</h1>
+                    <h6>lawyers@gmail.com</h6>
+                </div>
+
+                <div class="card">
+                    <img class="cimg" src="https://www.iconsdb.com/icons/preview/black/paper-xxl.png" alt="">
+                    <h1>زور مكتبنا</h1>
+                    <h6>Baghdad Al-kindy Street</h6>
+                </div>
+            </div>
+
+            <!--Contact Us form section is here-->
+            <form action="">
+                <div class="input-wrap">
+                    <input type="text" placeholder="... اسمك">
+                    <input type="email" placeholder="... الايميل الخاص بك">
+                </div>
+                <div class="input-wrap-2">
+                    <input type="text" placeholder="... موضوعك">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="... رسالتك"></textarea>
+                </div>
+                <div class="btn-wrapper">
+                    <button class="btn btn-primary">ارسل الرسالة</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--Footer section is here-->
+    <footer>
+        <img class="footer-logo" src="https://www.iconsdb.com/icons/preview/color/3DCFD3/book-16-xxl.png"
+            style="width: 4rem;" alt="">
+        <h3 class="footer-h3" style="text-transform: uppercase;">محاميك</h3>
+        <div class="footer-social">
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/instagram-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/twitter-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/facebook-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/snapchat-2-xxl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/google-plus-xxl.png" alt=""></a>
+        </div>
+        <div class="Copyright">
+            Copyright 2021 @ name LAWYERS. All Right Reserved.
+        </div>
+    </footer>
+
+    <script src="static\index.js"></script>
+</body>
+
+</html>

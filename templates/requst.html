@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع محاميك</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- here is nav bar-->
+    <header>
+        <div class="container">
+            <nav class="flex items-center justify-between">
+                <div class="right">
+                    <form method="GET" action="/login">
+                        <button class="btn-btn btn-secondary">تسجيل الدخول</button>
+                    </form>
+                    <div class="menu">
+                        <div class="b-menu"></div>
+                        <div class="b-menu"></div>
+                        <div class="b-menu"></div>
+                    </div>
+                </div>
+                <div class=" left flex items-center">
+                    <div class="nav-link">
+                        <a href="http://127.0.0.1:5000/">الصفحة الرئيسية</a>
+                        <a href="http://127.0.0.1:5000/lawyers-search?">المحامين</a>
+                        <a href="http://127.0.0.1:5000//laws">القانون العراقي </a>
+                        <a href="#">خدماتنا</a>
+                        <div class="btn-sidebar">
+                            <form method="GET" action="/login">
+                                <button class="btn-btn btn-secondary">تسجيل الدخول</button>
+                            </form>                        
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--Contact Us section is here-->
+    <section class="contact">
+        <div class="container">
+            <!--Contact Us form section is here-->
+            <form method="POST" action="/requst/{{ id }}">
+                <div class="input-wrap">
+                    <input type="text" name="number" placeholder="... رقم الهاتف">
+                    <input type="name" name="name" placeholder="... اسمك">
+                </div>
+                <div class="input-wrap-2">
+                    <textarea name="descrip" id="" cols="30" rows="10" placeholder="مشكلتك القانونية"></textarea>
+                </div>
+                <div class="btn-wrapper">
+                    <button class="btn btn-primary">ارسل الرسالة</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--Footer section is here-->
+    <footer>
+        <img class="footer-logo" src="https://www.iconsdb.com/icons/preview/color/3DCFD3/book-16-xxl.png"
+            style="width: 4rem;" alt="">
+        <h3 class="footer-h3" style="text-transform: uppercase;">محاميك</h3>
+        <div class="footer-social">
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/instagram-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/twitter-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/facebook-xl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/snapchat-2-xxl.png" alt=""></a>
+            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/google-plus-xxl.png" alt=""></a>
+        </div>
+        <div class="Copyright">
+            Copyright 2021 @ name LAWYERS. All Right Reserved.
+        </div>
+    </footer>
+
+    <script src="static\index.js"></script>
+</body>
+</html>
