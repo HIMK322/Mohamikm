@@ -31,20 +31,9 @@ db = SQL("sqlite:///lawyers.db")
 @app.route("/")
 def index():
 
-    """
-    db.execute("SELECT lawyer_id FROM review ORDER BY  SUM(review), COUNT(review)  DESC LIMIT 9 ")
-    db.execute("SELECT name, picture, city, years of experince, specialization FORM lawyers WHERE verfied = 1 AND  ")
-        rating_list=[]
-    result = db.execute("SELECT name, picture, id FROM lawyers WHERE verfied = 1  ")
-    for i in range(len(result)):
-        ratings= db.execute("SELECT SUM(review), COUNT(review) FROM review WHERE lawyer_id = ? ", result[i]["id"])
-        a={"sum" : ratings[0]["SUM(review)"] / ratings[0]["COUNT(review)"],
-        "count" : ratings[0]["COUNT(review)"]}
-        rating_list.append(a)
-    """
-    
+    lawyers = db.execute("SELECT name,total_rating FROM lawyers ORDER BY total_rating DESC LIMIT 10 ")
     result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
-    return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws")
+    return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws" , lawyer =lawyers)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -79,7 +68,6 @@ def register():
 
         # checking for valid input from the city selector
         elif city not in citys:
-            print("shiiiiiiiiiiiiiiiiiiit")
             error = "المحافظة غير موجودة"
 
         #insert the new lawyer
@@ -223,14 +211,8 @@ def search():
 
 
     else:
-        rating_list=[]
-        result = db.execute("SELECT name, picture, id FROM lawyers WHERE verfied = 1  ")
-        for i in range(len(result)):
-            ratings= db.execute("SELECT SUM(review), COUNT(review) FROM review WHERE lawyer_id = ? ", result[i]["id"])
-            a={"sum" : ratings[0]["SUM(review)"] / ratings[0]["COUNT(review)"],
-            "count" : ratings[0]["COUNT(review)"]}
-            rating_list.append(a)
-        return render_template("lawy-result.html",result= result , len= len(result) ,rating= rating_list)
+        result = db.execute("SELECT name, picture,total_rating FROM lawyers WHERE verfied = 1 ")
+        return render_template("lawy-result.html",lawyer= result , len= len(result))
 
 
 
@@ -286,6 +268,13 @@ def review(id):
             details = request.form.get('descrip')
             db.execute("INSERT INTO review (reviewer_num, lawyer_id, review, details) VALUES ( ?, ?, ?, ?)", number, id, review, details )
             
+            ratings=db.execute("SELECT review FROM review WHERE lawyer_id = ?" ,id)
+            rating_sum = 0
+            for i in range(len(ratings)):
+                rating_sum += ratings[i]["review"]
+            total = rating_sum / len(ratings)
+            db.execute("UPDATE lawyers SET total_rating = ? WHERE id = ?", total, id)
+
             return redirect("/")
 
         elif len(result2) != 0:
@@ -299,8 +288,7 @@ def review(id):
         return render_template("review.html", id =id)
 
 
-#lawyer loading
-
+#lawyer page repeat
 
 
 #laws txt

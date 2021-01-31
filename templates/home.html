@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">تسجيل دخول للمحامي <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="https://mohamikm.herokuapp.com/login">تسجيل دخول للمحامي <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"> قرارات محاكم التمييز<span class="sr-only">(current)</span></a>
@@ -81,7 +81,6 @@
                 <li data-target="#demo" data-slide-to="0" class="active"></li>
                 <li data-target="#demo" data-slide-to="1"></li>
                 <li data-target="#demo" data-slide-to="2"></li>
-                <li data-target="#demo" data-slide-to="3"></li>
             </ul>
 
             <!-- The slideshow -->
@@ -93,13 +92,8 @@
                             <div class="box">
                                 <a class="img" href="#"><img src="/static/img/criminal.jpg"
                                         class="img-fluidi img-thumbnail"></a>
-                                <h1>اسم المحامي</h1>
-                                <p class="m-4">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص
-                                    من
-                                    مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة
-                                    إلى
-                                    زيادة عدد الحروف التى يولدها التطبيق.
-                                    إذا كنت تحتاج إلى عدد أكبر من الفقرات</p>
+                                <h1> {{ lawyer[i]["name"] }} </h1>
+                                <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
                                 <div class="topteen-button">
                                     <a href="#"> مراسلة المحامي </a>
                                 </div>
@@ -108,21 +102,15 @@
                         {%endfor%}
                     </div>
                 </div>
-                {% for i in range(2)%}
                 <div class="carousel-item">
                     <div class="row">
-                        {% for i in range(3)%}
+                        {% for i in range(3,6)%}
                         <div class="col-lg-4 col-md-4 col-12">
                             <div class="box">
                                 <a class="img" href="#"><img src="/static/img/criminal.jpg"
                                         class="img-fluidi img-thumbnail"></a>
-                                <h1>اسم المحامي</h1>
-                                <p class="m-4">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص
-                                    من
-                                    مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة
-                                    إلى
-                                    زيادة عدد الحروف التى يولدها التطبيق.
-                                    إذا كنت تحتاج إلى عدد أكبر من الفقرات</p>
+                                <h1>{{ lawyer[i]["name"] }}</h1>
+                                <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
                                 <div class="topteen-button">
                                     <a href="#"> مراسلة المحامي </a>
                                 </div>
@@ -131,7 +119,23 @@
                         {%endfor%}
                     </div>
                 </div>   
-                {%endfor%}    
+                <div class="carousel-item">
+                    <div class="row">
+                        {% for i in range(6,9)%}
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="box">
+                                <a class="img" href="#"><img src="/static/img/criminal.jpg"
+                                        class="img-fluidi img-thumbnail"></a>
+                                <h1>{{ lawyer[i]["name"] }}</h1>
+                                <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
+                                <div class="topteen-button">
+                                    <a href="#"> مراسلة المحامي </a>
+                                </div>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>    
             </div>
 
             <!-- Left and right controls -->

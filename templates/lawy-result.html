@@ -1,148 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المحامين</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/lawy-srch.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>المحامين</title>
 </head>
-
 <body>
 
-    <!-- here is nav bar-->
-    <header>
-        <div class="container">
-            <nav class="flex items-center justify-between">
-                <div class="right">
-                    <form method="GET" action="/login">
-                        <button class="btn-btn btn-secondary">تسجيل الدخول</button>
-                    </form>                    
-                    <div class="menu">
-                        <div class="b-menu"></div>
-                        <div class="b-menu"></div>
-                        <div class="b-menu"></div>
+        <!--*********************** Header part and Nav ***********************-->
+        <div class="header" id="topheader">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                <div class="container">
+                    <img class="navbar-brand" src="/static/img/photo_2021-01-30_14-48-09-Recovered.png" style="width: 6rem;">
+                    <button class="navbar-toggler" style="outline: none;" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">تسجيل دخول للمحامي <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">خدماتنا <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contactid">تواصل معنا <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#footerfdiv">عن الموقع <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class=" left flex items-center">
-                    <div class="nav-link">
-                        <a href="http://127.0.0.1:5000/">الصفحة الرئيسية</a>
-                        <a href="http://127.0.0.1:5000/lawyers-search?">المحامين</a>
-                        <a href="http://127.0.0.1:5000//laws">القانون العراقي </a>
-                        <a href="#">خدماتنا</a>
-                        <div class="btn-sidebar">
-                            <form method="GET" action="/login">
-                                <button class="btn-btn btn-secondary">تسجيل الدخول</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="image">
-                    <h1>محاميك</h1>
-                    <img src="static/img//book-1.png" style="width: 4rem;" alt="">
                 </div>
             </nav>
+    
+            <section class="header-section">
+                <div class="center-div">
+                    <h1 class="font-weight-bold">
+                        ابحث عن المحامي المناسب
+                    </h1>
+                    <p> موقع ( محاميكم ) يجعل من السهل عليك العثور على محامين باستخدام
+                        التخصص المطلوب والمشاورة القانونية
+                    </p>
+                    <div class="input-group mb-3 container">
+                        <div class="input-group-append">
+                            <span class="input-group-text">بحث</span>
+                            <div class="select-wrapper">
+                                <select>
+                                    <option>بغداد</option>
+                                    <option>البصرة</option>
+                                    <option>اربيل</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control upperfooter" style="color: black;" placeholder="اسم المحامي">
+                    </div>
+                </div>
+            </section>
         </div>
-        <!-- Big Image here and search section-->
-        <div class="hero items-center">
-            <div class="right">
-                <h1 style="text-align: center;">ابحث عن المحامي المطلوب</h1>
+        <!--*********************** Header part end ***********************-->
+    
+    
+    
+   <!--*********************** Top 10 ***********************-->
+
+   <section class="top-teen">
+    <div class="container headings text-center">
+    <h1 class="text-center font-weight-bold" style="margin-bottom: 3rem; color: #16c9f6;">نتائج بحث المحامين</h1>
+    </div>
+
+        <!-- The slideshow -->
+        <div class="container">
+            {%for x in range(3) %}
+            <div class="">
+                <div class="row">
+                    {%for i in range(3) %}
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <div class="box">
+                            <a class="img" href="#"><img src="/static/img/criminal.jpg"
+                                    class="img-fluidi img-thumbnail"></a>
+                                    <h1>{{ lawyer[i]["name"] }}</h1>
+                                    <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
+                            <div class="topteen-button">
+                                <a href="#"> مراسلة المحامي </a>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
             </div>
-            <form method="POST" action="/lawyers-search">
-                <div class="search-main">
-                    <input type="text" name="Search" placeholder="اسم المحامي">
-                    <label for="city">اختار محافظتك</label>
-                    <select name="city" id="city">
-                        <option value="all" >الجميع</option>
-                        <option value= "بغداد"> بغداد </option>
-                        <option value= "بصرة"> بصرة </option>
-                        <option value= "بابل"> بابل </option>
-                        <option value= "كركوك"> كركوك </option>
-                      </select> 
-                      <label for="spec">اختار نوع المحامي</label>
-                      <select name="spec" id="spac">
-                        <option value="0" >الجميع</option>
-                        <option value="1" >محامي احوال شخصية</option>
-                        <option value="2" >محامي بدائة</option>
-                        <option value="3" >محامي جنايات</option>
-                      </select> 
-                    <button class="bbtn">ابحث</button>
-                </div>
-            </form>
+            {%endfor%}
         </div>
-    </header>
-    {% for i in range(len) %}
-    <div class="modal">
-        <img src= "static/img//how-to-write-a-profile.jpg" alt="">
-        <div class="close"></div>
     </div>
+</section>
+<!--*********************** Top 10 End ***********************-->
 
-    <div class="modal-container">
-        <div class="modal-card">
-            <div class="modal-header">
-                <div class="hamburger-menu">
-                    <div class="center"></div>
-                </div>
-                <a href="#" class="mail">
-                    <i class="far fa-envelope"></i>
-                </a>
-                <div class="main">
-                    <div class="image">
-                        <div class="hover">
-                            <i class="fas fa-camera fa-2x"></i>
+
+        
+            <!--*********************** Contact Us ***********************-->
+
+    <section class="contactus" id="contactid">
+        <div class="container headings text-center">
+            <h1 class="text-center font-weight-bold mt-5" style="color:  #16c9f6;">تواصل معنا</h1>
+            <p class="pt-2 mb-4">🥰 هنا يمكننا مساعدتك اذا واجهت مشكلة في استخدام الموقع</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="ادخل اسمك" id="Username" required
+                                autocomplete="off">
                         </div>
-                    </div>
-                    <h3 class="name">{{ result[i]['name'] }}</h3>
-                    <h3 class="sub-name">{{ result[i]['email'] }}</h3>
+
+                        <form action="/action_page.php">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="ادخل الايميل الخاص بك" id="email"
+                                    required autocomplete="off">
+                            </div>
+
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="اسم الموضوع" id="text" required
+                                        autocomplete="off">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="ادخل رسالتك📝" rows="4"
+                                        id="comment"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button class="form-button" type="submit">📤 ارسال</button>
+                                </div>
+                            </form>
                 </div>
             </div>
-            <div class="modle-content">
-                <div class="left">
-                    <div class="about-container">
-                        <h3 class="title">تقييم {{ rating[i]["sum"]}}</h3>
-                        <p class="text">عدد المقييم {{ rating[i]["count"]}}</p>
-                    </div>
+        </div>
+    </section>
 
-                    <div class="buttons-wrap">
-                        <div class="share-wrap">
-                            <a href="http://127.0.0.1:5000///requst/{{ result[i]['id'] }}" class="share">تواصل معه</a>
+
+    <!--*********************** Contact Us End ***********************-->
+
+
+
+
+
+    <!--*********************** Upper footer ***********************-->
+
+    <section class="upper-footer" id="upperfooterid">
+        <div class="container headings text-center">
+            <h1 class="text-center mb-4" style="font-size: 1.5rem;"> 🤳 ارسل ايميلك لتصلك اخر التحديثات و الاخبار</h1>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">ارسال</span>
+                        </div>
+                        <input type="text" class="form-control upperfooter" placeholder="ايميلك الخاص">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!--*********************** Upper footer End ***********************-->
+
+
+        <!--*********************** footer ***********************-->
+        <footer class="footersection" id="footerfdiv">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-text col-lg-4 col-md-4 col-12 footer-div">
+                        <div>
+                            <h3>عن الموقع</h3>
+                            <p>محاميكم، يقدم لك خدمة قانونية من قبل محامين و مستشارين قانونيون على كفاءة عالية وخبرة
+                                ممتدة، وذلك عبر منصة الكترونية.</p>
                         </div>
                     </div>
-                    <div class="buttons-wrap">
-                        <div class="share-wrap">
-                            <a href="http://127.0.0.1:5000///review/{{ result[i]['id'] }}" class="share">قيم المحامي</a>
+
+                    <div class="footer-text col-lg-4 col-md-12 col-12 footer-div">
+                        <div>
+                            <h3>صفحات الموقع</h3>
+                            <li><a href="#">الصفحة الرئيسية</a></li>
+                            <li><a href="#">عن الموقع</a></li>
+                            <li><a href="#">تواصل معنا</a></li>
+                            <li><a href="#">خدماتنا</a></li>
+                            <li><a href="#">تسجيل دخول للمحامي</a></li>
+                        </div>
+                    </div>
+
+                    <div class="footer-text col-lg-4 col-md-4 col-12 footer-div">
+                        <div>
+                            <h3>البحث عن بعض الاخبار</h3>
+                            <p>هنا يمكنك البحث عن بعض الاخبار الخاصة بالقوانين و المحاكم وما يحدث</p>
+
+                            <div class="container news-main">
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">ارسال</span>
+                                            </div>
+                                            <input type="text" class="form-control upperfooter" placeholder="ايميلك الخاص">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>  
-        </div>
-        {%endfor%}  
-    </div>
-    </div>
-    </div>
 
+                <div class="mt-5 text-center">
+                    <p>copyright @2021 All rights reserved for (محاميكم) website</p>
+                </div>
 
-  
+                <div class="scrolltop float-right">
+                    <i class="fa fa-arrow-up" onclick="topFunction()" id="myBtn"></i>
+                </div>
+            </div>
+        </footer>
+        <!--*********************** footer End ***********************-->
 
-    <!--Footer section is here-->
-    <footer>
-        <img class="footer-logo" src="https://www.iconsdb.com/icons/preview/color/3DCFD3/book-16-xxl.png"
-            style="width: 4rem;" alt="">
-        <h3 class="footer-h3" style="text-transform: uppercase;">محاميك</h3>
-        <div class="footer-social">
-            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/instagram-xl.png" alt=""></a>
-            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/twitter-xl.png" alt=""></a>
-            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/facebook-xl.png" alt=""></a>
-            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/snapchat-2-xxl.png" alt=""></a>
-            <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/google-plus-xxl.png" alt=""></a>
-        </div>
-        <div class="Copyright">
-            Copyright 2021 @ name LAWYERS. All Right Reserved.
-        </div>
-    </footer>
+    
 
-    <script src="/static/lawy-srch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        mybutton = document.getElementById("myBtn");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            }
+            else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop =0;
+        }
+    </script>
 </body>
-
 </html>

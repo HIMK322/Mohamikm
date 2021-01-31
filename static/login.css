@@ -153,6 +153,7 @@ select
 	background: #eee;
 	direction: rtl;
 	border-radius: 50px;
+	outline: none;
 }
 
 
