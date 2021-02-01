@@ -54,19 +54,23 @@
                     <p> موقع ( محاميكم ) يجعل من السهل عليك العثور على محامين باستخدام
                         التخصص المطلوب والمشاورة القانونية
                     </p>
-                    <div class="input-group mb-3 container">
-                        <div class="input-group-append">
-                            <span class="input-group-text">بحث</span>
-                            <div class="select-wrapper">
-                                <select>
-                                    <option>بغداد</option>
-                                    <option>البصرة</option>
-                                    <option>اربيل</option>
-                                </select>
+                    <form method="POST" action="/lawyers-search">
+                        <div class="input-group mb-3 container">
+                            <div class="input-group-append">
+                                <button class="input-group-text">ابحث</button>
+                                <div class="select-wrapper">
+                                    <select name="city" id="city">
+                                        <option value="all" >الجميع</option>
+                                        <option value= "بغداد"> بغداد </option>
+                                        <option value= "بصرة"> بصرة </option>
+                                        <option value= "بابل"> بابل </option>
+                                        <option value= "كركوك"> كركوك </option>
+                                    </select> 
+                                </div>
                             </div>
+                            <input type="text" name="Search" class="form-control upperfooter" style="color: black;" placeholder="اسم المحامي">
                         </div>
-                        <input type="text" class="form-control upperfooter" style="color: black;" placeholder="اسم المحامي">
-                    </div>
+                    </form>
                 </div>
             </section>
         </div>
@@ -83,24 +87,26 @@
 
         <!-- The slideshow -->
         <div class="container">
-            {%for x in range(3) %}
-            <div class="">
-                <div class="row">
-                    {%for i in range(3) %}
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="box">
-                            <a class="img" href="#"><img src="/static/img/criminal.jpg"
-                                    class="img-fluidi img-thumbnail"></a>
-                                    <h1>{{ lawyer[i]["name"] }}</h1>
-                                    <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
-                            <div class="topteen-button">
-                                <a href="#"> مراسلة المحامي </a>
+            {%for x in range(len) %}
+                {% if x % 3 == 0  %}
+                    <div class="">
+                    <div class="row">
+                {%endif%}
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="box">
+                                <a class="img" href="#"><img src="/static/img/criminal.jpg"
+                                        class="img-fluidi img-thumbnail"></a>
+                                        <h1>{{ lawyer[x]["name"] }}</h1>
+                                        <p class="m-4"> {{ lawyer[x]["total_rating"] }}</p>
+                                <div class="topteen-button">
+                                    <a href="#"> مراسلة المحامي </a>
+                                </div>
                             </div>
                         </div>
+                {% if (x + 1 ) % 3 == 0%}
                     </div>
-                    {%endfor%}
-                </div>
-            </div>
+                    </div>
+                {%endif%}
             {%endfor%}
         </div>
     </div>

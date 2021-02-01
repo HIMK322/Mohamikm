@@ -196,18 +196,13 @@ def search():
         city= request.form.get('city')
         rating_list=[]
         if city == "all":
-            result = db.execute("SELECT name, picture, id FROM lawyers WHERE name LIKE ? AND specialization >= ? AND verfied = 1  ", name, spec)
+            result = db.execute("SELECT name, picture, total_rating FROM lawyers WHERE name LIKE ? AND verfied = 1  ", name)
      
         else :
-            result = db.execute("SELECT name, picture, id FROM lawyers WHERE name LIKE ? AND city = ? AND specialization >= ? AND verfied = 1  ", name, city, spec)          
+            result = db.execute("SELECT name, picture, total_rating FROM lawyers WHERE name LIKE ? AND city = ? AND verfied = 1  ", name, city)          
 
-        for i in range(len(result)):
-            ratings= db.execute("SELECT SUM(review), COUNT(review) FROM review WHERE lawyer_id = ? ", result[i]["id"])
-            a={"sum" : ratings[0]["SUM(review)"] / ratings[0]["COUNT(review)"],
-            "count" : ratings[0]["COUNT(review)"]}
-            rating_list.append(a)
 
-        return render_template ("lawy-result.html",result= result , len= len(result) ,rating= rating_list)
+        return render_template ("lawy-result.html",lawyer= result , len= len(result) ,rating= rating_list)
 
 
     else:
@@ -250,10 +245,10 @@ def laws():
     if request.method == "POST" :
         law = f"%{request.form.get('Search')}%"
         result = db.execute("SELECT subject,description,law_id FROM iraqi_law WHERE subject LIKE ?", law )
-        return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws" )
+        return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون" )
     else:
         result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
-        return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws")
+        return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون")
 
 
 @app.route("/review/<id>", methods=["GET", "POST"])
@@ -289,7 +284,7 @@ def review(id):
 
 
 #lawyer page repeat
-
+#adman shit
 
 #laws txt
 #editing  page

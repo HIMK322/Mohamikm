@@ -54,12 +54,14 @@
                     <p> موقع ( محاميكم ) يجعل من السهل عليك العثور على محامين باستخدام
                         التخصص المطلوب والمشاورة القانونية
                     </p>
-                    <div class="input-group mb-3 container">
-                        <div class="input-group-append">
-                            <span class="input-group-text">بحث</span>
+                    <form method="POST" action = {{link}} >
+                        <div class="input-group mb-3 container">
+                            <div class="input-group-append">
+                                <button class="input-group-text">ابحث</button>
+                            </div>
+                            <input type="text" name="Search" class="form-control upperfooter" style="color: black;" placeholder=" {{ placeholder }} ">
                         </div>
-                        <input type="text" class="form-control upperfooter" style="color: black;" placeholder="اسم القانون او رقم المادة">
-                    </div>
+                    </form>
                 </div>
             </section>
         </div>
@@ -72,12 +74,15 @@
             <p class="pt-2" style="margin-bottom: 3rem;">ستجد هنا كل القوانين التي ستحتاجها و اكثر </p>
             <div class="cards">
                 {%for i in range(len)%}
+                {% if "law_id" in result[i] %}<a href="http://127.0.0.1:5000//law/{{ result[i]['law_id'] }}">{% endif %}
                 <div class="extra-div">
                     <h2>{{ result[i]["subject"] }}</h2>
                     <p>{{ result[i]["description"] }}</p>
                 </div>
+                {% if "law_id" in result[i] %}</a>{% endif %}
                 {%endfor%}
             </div>
+           
         </div>
 
     </section>
