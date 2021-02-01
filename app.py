@@ -225,7 +225,7 @@ def law(id):
             if search in text[i]["description"]:
                 text[i]["description"]=arabic_reshaper.reshape(text[i]["description"])
                 result.append(text[i]) 
-        return render_template("law-searchold.html" , len=len(result) , result= result ,head = search, link = f"/law/{id}" )
+        return render_template("law-search.html" , len=len(result) , result= result ,head = search, link = f"/law/{id}" )
                    
     else:
 
@@ -235,7 +235,7 @@ def law(id):
             law = Path (db.execute("SELECT law FROM iraqi_law WHERE law_id = ?", id )[0]["law"] + f"/{i}.txt")
             with open ( law , encoding='utf-8') as f:
                 text.append ( { "description" : arabic_reshaper.reshape(f.read()) , "subject" :f" { i } المادة " } )
-        return render_template("law-searchold.html", len=len(text), result= text, head=head, link=f"/law/{id}" )
+        return render_template("law-search.html", len=len(text), result= text, head=head, link=f"/law/{id}" )
 
 
 
@@ -244,10 +244,10 @@ def laws():
     if request.method == "POST" :
         law = f"%{request.form.get('Search')}%"
         result = db.execute("SELECT subject,description,law_id FROM iraqi_law WHERE subject LIKE ?", law )
-        return render_template("law-searchold.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون" )
+        return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون" )
     else:
         result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
-        return render_template("law-searchold.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون")
+        return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون")
 
 
 @app.route("/review/<id>", methods=["GET", "POST"])
