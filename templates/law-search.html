@@ -74,7 +74,7 @@
             <p class="pt-2" style="margin-bottom: 3rem;">ستجد هنا كل القوانين التي ستحتاجها و اكثر </p>
             <div class="cards">
                 {%for i in range(len)%}
-                {% if "law_id" in result[i] %}<a href="http://127.0.0.1:5000//law/{{ result[i]['law_id'] }}">{% endif %}
+                {% if "law_id" in result[i] %}<a href="https://mohamikm.herokuapp.com//law/{{ result[i]['law_id'] }}">{% endif %}
                 <div class="extra-div">
                     <h2>{{ result[i]["subject"] }}</h2>
                     <p>{{ result[i]["description"] }}</p>
