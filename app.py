@@ -192,7 +192,6 @@ def search():
 
     if request.method == "POST" :
         name = f"%{request.form.get('Search')}%"
-        spec = request.form.get('spec')
         city= request.form.get('city')
         rating_list=[]
         if city == "all":
