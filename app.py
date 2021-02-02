@@ -31,7 +31,7 @@ db = SQL("sqlite:///lawyers.db")
 @app.route("/")
 def index():
 
-    lawyers = db.execute("SELECT name,total_rating FROM lawyers ORDER BY total_rating DESC LIMIT 10 ")
+    lawyers = db.execute("SELECT name,total_rating ,city FROM lawyers ORDER BY total_rating DESC LIMIT 10 ")
     result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
     return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws" , lawyer =lawyers)
 
@@ -197,17 +197,17 @@ def search():
         city= request.form.get('city')
         rating_list=[]
         if city == "all":
-            result = db.execute("SELECT name, picture, total_rating FROM lawyers WHERE name LIKE ? AND verfied = 1  ", name)
+            result = db.execute("SELECT name, picture, total_rating, city FROM lawyers WHERE name LIKE ? AND verfied = 1  ", name)
      
         else :
-            result = db.execute("SELECT name, picture, total_rating FROM lawyers WHERE name LIKE ? AND city = ? AND verfied = 1  ", name, city)          
+            result = db.execute("SELECT name, picture, total_rating ,city FROM lawyers WHERE name LIKE ? AND city = ? AND verfied = 1  ", name, city)          
         
 
         return render_template ("lawy-result.html",lawyer= result , len= len(result) ,rating= rating_list)
 
 
     else:
-        result = db.execute("SELECT name, picture,total_rating FROM lawyers WHERE verfied = 1 ")
+        result = db.execute("SELECT name, picture,total_rating,city FROM lawyers WHERE verfied = 1 ")
         return render_template("lawy-result.html",lawyer= result , len= len(result))
 
 
