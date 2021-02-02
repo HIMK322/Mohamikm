@@ -78,13 +78,10 @@ def register():
             user_id = db.execute("SELECT id FROM lawyers WHERE email = ?", email)[0]["id"]
                 
             # making image path and naming the image by thier user id
-            lice_path = Path("C:/Users/hassa/Videos/lawyers1/static/doc/lic/{}.{}".format(user_id, licens_extention))
-            pic_path = Path("C:/Users/hassa/Videos/lawyers1/static/doc/pic/{}.{}".format(user_id, pic_extention))
-            
-            pic_path1="/static/doc/pic/{}.{}".format(user_id, pic_extention)
-            lice_path1="/static/doc/lic/{}.{}".format(user_id, licens_extention)
+            lice_path = Path("static/doc/lic/{}.{}".format(user_id, licens_extention))
+            pic_path = Path("static/doc/pic/{}.{}".format(user_id, pic_extention))
             #saving the image path
-            db.execute("UPDATE lawyers SET license = ?, picture = ? WHERE id = ? ", str(lice_path1), str(pic_path1), user_id) 
+            db.execute("UPDATE lawyers SET license = ?, picture = ? WHERE id = ? ", str(lice_path), str(pic_path), user_id) 
 
             #saving the a images to their file path
             licens.save(lice_path)
