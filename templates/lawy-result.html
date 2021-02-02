@@ -94,8 +94,13 @@
                 {%endif%}
                         <div class="col-lg-4 col-md-4 col-12">
                             <div class="box">
-                                <a class="img" href="#"><img src="/static/img/criminal.jpg"
+                                {% if  lawyer[x]["picture"] != None %}
+                                <a class="img" href="#"><img src=" {{ lawyer[x]['picture'] }} "
                                         class="img-fluidi img-thumbnail"></a>
+                                {%else%}
+                                <a class="img" href="#"><img src="/static/img/criminal.jpg"
+                                    class="img-fluidi img-thumbnail"></a>
+                                {%endif%}
                                         <h1>{{ lawyer[x]["name"] }}</h1>
                                         <p class="m-4"> {{ lawyer[x]["total_rating"] }}</p>
                                 <div class="topteen-button">

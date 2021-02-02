@@ -76,15 +76,17 @@ def register():
             if number[0] == "0":
                 number = number.replace("0","+964", 1) 
         
-            db.execute("INSERT INTO lawyers ('name', 'password', 'email', 'number', 'verfied', 'city') VALUES (? , ?, ?, ?, 0 , ?)", name, generate_password_hash(password), email, number ,city)
+            db.execute("INSERT INTO lawyers ('name', 'password', 'email', 'number', 'verfied', 'city' ,'total_rating') VALUES (? , ?, ?, ?, 1 , ?, 0)", name, generate_password_hash(password), email, number ,city)
             user_id = db.execute("SELECT id FROM lawyers WHERE email = ?", email)[0]["id"]
                 
             # making image path and naming the image by thier user id
-            lice_path = Path("C:/Users/hassa/Videos/lawyers1/doc/lic/{}.{}".format(user_id, licens_extention))
-            pic_path = Path("C:/Users/hassa/Videos/lawyers1/doc/pic/{}.{}".format(user_id, pic_extention))
-
+            lice_path = Path("C:/Users/hassa/Videos/lawyers1/static/doc/lic/{}.{}".format(user_id, licens_extention))
+            pic_path = Path("C:/Users/hassa/Videos/lawyers1/static/doc/pic/{}.{}".format(user_id, pic_extention))
+            
+            pic_path1="/static/doc/pic/{}.{}".format(user_id, pic_extention)
+            lice_path1="/static/doc/lic/{}.{}".format(user_id, licens_extention)
             #saving the image path
-            db.execute("UPDATE lawyers SET license = ?, picture = ? WHERE id = ? ", str(lice_path), str(pic_path), user_id) 
+            db.execute("UPDATE lawyers SET license = ?, picture = ? WHERE id = ? ", str(lice_path1), str(pic_path1), user_id) 
 
             #saving the a images to their file path
             licens.save(lice_path)
@@ -280,6 +282,14 @@ def review(id):
             # you need to send message first
     else:
         return render_template("review.html", id =id)
+
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+    if request.method == "POST" :
+        pass
+    else:
+        unregister=db.execute("SELECT name , number , picture , license FROM lawyers WHERE verfied = 0")
+        render_template("admin.html", unreg = unregister)
 
 
 #lawyer page repeat
