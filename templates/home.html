@@ -92,9 +92,15 @@
                             <div class="box">
                                 <a class="img" href="#"><img src="/static/img/criminal.jpg"
                                         class="img-fluidi img-thumbnail"></a>
-                                <h1> {{ lawyer[i]["name"] }} </h1>
-                                <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
-                                <p class="m-4"> {{ lawyer[i]["city"] }}</p>
+                                        <h1>{{ lawyer[i]["name"] }} </h1>
+                                        <h3>{{ lawyer[i]["total_rating"] }}</h3>
+                                        <h1>{{ lawyer[i]["city"] }}</h1>
+                                        <p class="m-4">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص
+                                            من
+                                            مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة
+                                            إلى
+                                            زيادة عدد الحروف التى يولدها التطبيق.
+                                            إذا كنت تحتاج إلى عدد أكبر من الفقرات</p>
                                 <div class="topteen-button">
                                     <a href="#"> مراسلة المحامي </a>
                                 </div>
@@ -110,8 +116,15 @@
                             <div class="box">
                                 <a class="img" href="#"><img src="/static/img/criminal.jpg"
                                         class="img-fluidi img-thumbnail"></a>
-                                <h1>{{ lawyer[i]["name"] }}</h1>
-                                <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
+                                        <h1>{{ lawyer[i]["name"] }} </h1>
+                                        <h3>{{ lawyer[i]["total_rating"] }}</h3>
+                                        <h1>{{ lawyer[i]["city"] }}</h1>
+                                <p class="m-4">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص
+                                    من
+                                    مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة
+                                    إلى
+                                    زيادة عدد الحروف التى يولدها التطبيق.
+                                    إذا كنت تحتاج إلى عدد أكبر من الفقرات</p>
                                 <div class="topteen-button">
                                     <a href="#"> مراسلة المحامي </a>
                                 </div>
@@ -127,8 +140,16 @@
                             <div class="box">
                                 <a class="img" href="#"><img src="/static/img/criminal.jpg"
                                         class="img-fluidi img-thumbnail"></a>
-                                <h1>{{ lawyer[i]["name"] }}</h1>
-                                <p class="m-4"> {{ lawyer[i]["total_rating"] }}</p>
+                                        <h1>{{ lawyer[i]["name"] }} </h1>
+                                        <h3>{{ lawyer[i]["total_rating"] }}</h3>
+                                        <h1>{{ lawyer[i]["city"] }}</h1>
+                                <p class="m-4">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص
+                                    من
+                                    مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة
+                                    إلى
+                                    زيادة عدد الحروف التى يولدها التطبيق.
+                                    إذا كنت تحتاج إلى عدد أكبر من الفقرات</p>
+
                                 <div class="topteen-button">
                                     <a href="#"> مراسلة المحامي </a>
                                 </div>
@@ -164,10 +185,12 @@
             <p class="pt-2" style="margin-bottom: 3rem;">ستجد هنا بعض القوانين التي قد تحتاجها </p>
             <div class="cards">
                 {%for i in range(6)%}
+                {% if "law_id" in result[i] %}<a href="https://mohamikm.herokuapp.com/law/{{ result[i]['law_id'] }}">{% endif %}
                 <div class="extra-div">
                     <h2>{{ result[i]["subject"] }}</h2>
                     <p>{{ result[i]["description"] }}</p>
                 </div>
+                {% if "law_id" in result[i] %}</a>{% endif %}
                 {%endfor%}
                 <!-- Button section in cards-->
                 <div></div>
@@ -223,11 +246,11 @@
                     <div class="footer-text col-lg-4 col-md-12 col-12 footer-div">
                         <div>
                             <h3>صفحات الموقع</h3>
-                            <li><a href="#">الصفحة الرئيسية</a></li>
-                            <li><a href="#">عن الموقع</a></li>
-                            <li><a href="#">تواصل معنا</a></li>
+                            <li><a href="https://mohamikm.herokuapp.com/">الصفحة الرئيسية</a></li>
+                            <li><a href="https://mohamikm.herokuapp.com/lawyers-search">المحامين</a></li>
+                            <li><a href="https://mohamikm.herokuapp.com/laws">القوانين</a></li>
                             <li><a href="#">خدماتنا</a></li>
-                            <li><a href="#">تسجيل دخول للمحامي</a></li>
+                            <li><a href="https://mohamikm.herokuapp.com/login">تسجيل دخول للمحامي</a></li>
                         </div>
                     </div>
 

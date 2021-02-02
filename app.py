@@ -281,18 +281,19 @@ def review(id):
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     if request.method == "POST" :
-        pass
+        ids=100
+        db.execute("DELETE FROM lawyers WHERE id = ? ", ids)
+        db.execute("UPDATE lawyers SET verfied = 1 WHERE id = ? ", ids ) 
+
     else:
         unregister=db.execute("SELECT name , number , picture , license FROM lawyers WHERE verfied = 0")
-        render_template("admin.html", unreg = unregister)
+        render_template("admin.html", unreg = unregister, len = len(unregister))
 
 
-#lawyer page repeat
 #adman shit
 
 #laws txt
 #editing  page
-#admin page
 # انتهاء صلاحية الاهوية
 #register in nav bar
 #cheack messaging for other numbers
