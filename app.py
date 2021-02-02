@@ -41,6 +41,7 @@ def register():
     error = None
     allowed=['png', 'jpg', 'jpeg']
     citys=["كركوك", "بابل","بغداد","بصرة"]
+
     if request.method == "POST" :
         # saving the received data in variables for easier use
         city = request.form.get("city")
@@ -58,9 +59,6 @@ def register():
         if pic_extention not in allowed or licens_extention not in allowed :
             error="صيغة الصورة غير مقبولة"
 
-        # if any of the field is empty display an error page
-        #if  (name == "") or (password == "") or (number == "") or (email == ""):
-        #   error = "يجب ملاء الحقل"
 
         # if the email is already taken display an error page
         elif len(db.execute("SELECT email FROM lawyers WHERE email = ?", email)) != 0:
@@ -97,7 +95,7 @@ def register():
         return render_template("login.html",error=error)
 
     else:
-        return render_template("login.html",error=error)
+        return render_template("login.html")
 
 
 
