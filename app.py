@@ -228,7 +228,7 @@ def law(id):
         return render_template("law-search.html" , len=len(result) , result= result ,head = search, link = f"/law/{id}" )
                    
     else:
-
+        
         head = db.execute("SELECT subject FROM iraqi_law WHERE law_id = ?", id )[0]["subject"]
         text = []   
         for i in range(1,11):
