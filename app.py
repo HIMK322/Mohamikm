@@ -86,13 +86,11 @@ def register():
             #saving the image path
             db.execute("UPDATE lawyers SET license = ?, picture = ? WHERE id = ? ", str(lice_path1), str(pic_path1), user_id) 
 
-            return redirect("/")
-
             #saving the a images to their file path
             licens.save(lice_path)
             pic.save(pic_path)
         
-            
+            return redirect("/")
 
         return render_template("login.html",error=error)
 
@@ -230,14 +228,13 @@ def law(id):
         return render_template("law-search.html" , len=len(result) , result= result ,head = search, link = f"/law/{id}" )
                    
     else:
-        """
+
         head = db.execute("SELECT subject FROM iraqi_law WHERE law_id = ?", id )[0]["subject"]
         text = []   
         for i in range(1,11):
             law = Path (db.execute("SELECT law FROM iraqi_law WHERE law_id = ?", id )[0]["law"] + f"/{i}.txt")
             with open ( law , encoding='utf-8') as f:
                 text.append ( { "description" : arabic_reshaper.reshape(f.read()) , "subject" :f" { i } المادة " } )
-        """
         return render_template("law-search.html", len=len(text), result= text, head=head, link=f"/law/{id}" )
 
 
