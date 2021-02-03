@@ -1,0 +1,76 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background: linear-gradient(360deg,#e9fbcf 10%,#1d7d8e 360%);
+}
+
+h1
+{
+    text-align: center;
+    color: #fff;
+    margin: 2rem auto 2rem auto;
+    text-shadow: 3px 3px rgba(0, 0, 0, 0.349);
+}
+
+.container
+{
+    background: rgba(0, 0, 0, 0.39);
+    width: 50%;
+    height: auto;
+    padding: 3rem 5rem;
+    margin: 2rem auto 2rem auto;
+    border-radius: 3rem;
+    box-shadow: 10px 10px 8px 10px rgba(0, 0, 0, 0.219);
+}
+
+.photos
+{
+    margin: 2rem auto 2rem auto;
+    text-align: center;
+}
+
+.text input
+{
+    margin: 2rem auto 2rem auto;
+    display: block;
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    outline: none;
+    border: none;
+    direction: rtl;
+    font-size: 1.2rem;
+}
+
+button
+{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 2rem;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.219);
+}
+
+.centering-button
+{
+    margin-top: 1rem;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+a
+{
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2rem;
+}

@@ -197,8 +197,10 @@ def search():
         else :
             result = db.execute("SELECT name, picture, total_rating ,city FROM lawyers WHERE name LIKE ? AND city = ? AND verfied = 1  ", name, city)          
         
-
-        return render_template ("lawy-result.html",lawyer= result , len= len(result) ,rating= rating_list)
+        if len(result) == 0 :
+            return render_template("lawy_err.html")
+        else:
+            return render_template ("lawy-result.html",lawyer= result , len= len(result) ,rating= rating_list)
 
 
     else:
@@ -241,7 +243,10 @@ def laws():
     if request.method == "POST" :
         law = f"%{request.form.get('Search')}%"
         result = db.execute("SELECT subject,description,law_id FROM iraqi_law WHERE subject LIKE ?", law )
-        return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون" )
+        if len(result) == 0 :
+            return render_template("law_err.html", link="laws", placeholder= "اسم القانون")
+        else:
+            return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون" )
     else:
         result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
         return render_template("law-search.html", len= len(result), result=result , head="القانون العراقي", link="laws", placeholder= "اسم القانون")
@@ -286,7 +291,7 @@ def admin():
         db.execute("UPDATE lawyers SET verfied = 1 WHERE id = ? ", ids ) 
 
     else:
-        unregister=db.execute("SELECT name , number , picture , license FROM lawyers WHERE verfied = 0")
+        unregister=db.execute("SELECT * FROM lawyers WHERE verfied = 0")
         render_template("admin.html", unreg = unregister, len = len(unregister))
 
 
