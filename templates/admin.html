@@ -7,25 +7,39 @@
     <title>admin</title>
 </head>
 <body>
+    {%if len == 1%}
+    <form  method="POST" action="/admin/{{ result[0]['id'] }}">
+        <div class="container">
+            <h1>Admi setting</h1>
+            <div class="photos">
+                <img src="{{ result[0]['license']}}" alt="HTML5 Doctor Logo" width="500" height="300" />     
+            </div>
+            <div class="text">
+                <h5>{{  result[0]["name"]}}</h5>
+                <h3>{{  result[0]["email"]}}</h5>
+                <h4>{{  result[0]["number"]}}</h5>
+            <input type="text" name="years"  placeholder=" years of exp">
+                <input type="text" name="spc"  placeholder=" specialization">
+                <input type="text" name="exp"  placeholder="  expire date">
+            </div>
+            <div class="photos">
+                <img src="{{ result[0]['picture'] }}" alt="HTML5 Doctor Logo" width="200" height="200" />
+            </div>
+            <div class="centering-button">
+            <button type="submit">verfie</button>
+            </div>
+        </div>
+        {%elif len == 0%}
+        <div class="container">
+            <h1>Admi setting</h1>
 
-    <div class="container">
-        <h1>Admi setting</h1>
-        <div class="photos">
-            <input type="file" name="" id="">
-            <input type="file" name="" id="">
+            <div class="text">
+                <h1>no new registers</h1>
+            </div>
+           
         </div>
-        <div class="text">
-            <input type="text" name="" id="" placeholder="  ادخل المعلومات ...">
-            <input type="text" name="" id="" placeholder="  ادخل المعلومات ...">
-            <input type="text" name="" id="" placeholder="  ادخل المعلومات ...">
-            <input type="text" name="" id="" placeholder="  ادخل المعلومات ...">
-            <input type="text" name="" id="" placeholder="  ادخل المعلومات ...">
-            <input type="text" name="" id="" placeholder="  ادخل المعلومات ...">
-        </div>
-        <div class="centering-button">
-        <button type="submit"><a href="#">done</a></button>
-        </div>
-    </div>
+        {%endif%}
+    </form>
     
 </body>
 </html>

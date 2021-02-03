@@ -10,6 +10,7 @@ from pathlib import Path
 from twilio.rest import Client
 from bidi.algorithm import get_display
 import arabic_reshaper
+from functools import wraps
 
 app = Flask(__name__)
 
@@ -28,6 +29,19 @@ Session(app)
 db = SQL("sqlite:///lawyers.db")
 
 
+def login_required(f):
+    """
+    Decorate routes to require login.
+
+    http://flask.pocoo.org/docs/1.0/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
+    
 @app.route("/")
 def index():
 
@@ -74,7 +88,7 @@ def register():
             if number[0] == "0":
                 number = number.replace("0","+964", 1) 
         
-            db.execute("INSERT INTO lawyers ('name', 'password', 'email', 'number', 'verfied', 'city' ,'total_rating') VALUES (? , ?, ?, ?, 1 , ?, 0)", name, generate_password_hash(password), email, number ,city)
+            db.execute("INSERT INTO lawyers ('name', 'password', 'email', 'number', 'verfied', 'city' ,'total_rating') VALUES (? , ?, ?, ?, 0 , ?, 0)", name, generate_password_hash(password), email, number ,city)
             user_id = db.execute("SELECT id FROM lawyers WHERE email = ?", email)[0]["id"]
                 
             # making image path and naming the image by thier user id
@@ -114,9 +128,15 @@ def login():
             error = "الرمز السري غير صحيح"
             
         #save the session id
+
         else:
             session["user_id"] = person[0]["id"]
-            return redirect("/")
+
+            #admin
+            if person[0]["id"] == 16:
+                return redirect("/admin")
+            else:
+                return redirect("/")
 
         return render_template("login.html",error = error)
 
@@ -283,28 +303,40 @@ def review(id):
     else:
         return render_template("review.html", id =id)
 
-@app.route("/admin", methods=["GET", "POST"])
+@app.route("/admin")
+@login_required
 def admin():
-    if request.method == "POST" :
-        ids=100
-        db.execute("DELETE FROM lawyers WHERE id = ? ", ids)
-        db.execute("UPDATE lawyers SET verfied = 1 WHERE id = ? ", ids ) 
 
+    if session.get("user_id") != 16:
+            return redirect("/login")
     else:
-        unregister=db.execute("SELECT * FROM lawyers WHERE verfied = 0")
-        render_template("admin.html", unreg = unregister, len = len(unregister))
+        unregister=db.execute("SELECT * FROM lawyers WHERE verfied = 0 LIMIT 1")
+        return render_template("admin.html", result = unregister, len = len(unregister))
+    
 
+@app.route("/admin/<ids>", methods=["GET", "POST"])
+@login_required
+def accept(ids):
 
-#adman shit
+    if request.method == "POST" :
+        years = request.form.get("years")
+        spc = request.form.get("spc")
+        exp = request.form.get("exp")
+        db.execute("UPDATE lawyers SET verfied = 1, specialization = ?, exp_years = ?, expire_date = ?  WHERE id = ? ", spc , exp , years , ids ) 
+        unregister=db.execute("SELECT * FROM lawyers WHERE verfied = 0 LIMIT 1")
+        return render_template("admin.html", result = unregister, len = len(unregister))
+
+       
+#show all unverfied users
+#show all verfied users
+#show the laws
+#update the the laws of tammez
 
 #laws txt
-#editing  page
-# انتهاء صلاحية الاهوية
 #register in nav bar
 #cheack messaging for other numbers
 
 
 # find and len of the word so we highlight it
-# make email requset
 
 
