@@ -45,7 +45,7 @@ def login_required(f):
 @app.route("/")
 def index():
 
-    lawyers = db.execute("SELECT name,total_rating ,city FROM lawyers ORDER BY total_rating DESC LIMIT 10 ")
+    lawyers = db.execute("SELECT name,total_rating ,city,id FROM lawyers ORDER BY total_rating DESC LIMIT 10 ")
     result = db.execute("SELECT subject,description,law_id FROM iraqi_law ")
     return render_template("home.html",len= len(result), result=result , head="القانون العراقي", link="laws" , lawyer =lawyers)
 
