@@ -33,31 +33,6 @@ p
     color: #606060;
 }
 
-
-.header
-{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.637), rgba(0, 0, 0, 0.637)), url(./img/Best-Top-10-Lawyers-In-Islamabad-750x400.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    clip-path: polygon(100% 0%, 100% 75%, 50% 100%, 0 75%, 0 0);
-    position: relative;
-}
-
-.header::before
-{
-    content: "";
-    position: absolute;
-    top: 0%;
-    bottom: 0%;
-    left: 0;
-    right: 0;
-    opacity: .4;
-    z-index: -1;
-    background: linear-gradient(to right, #1e5799 0%, #3ccdbb 0%, #16c9f6 100%);
-}
-
 .navbar:before
 {
     content: "";
@@ -66,7 +41,7 @@ p
     bottom: 0%;
     left: 0;
     right: 0;
-    opacity: .4;
+    opacity: 3;
     z-index: -1;
     background: linear-gradient(to right, #1e5799 0%, #3ccdbb 0%, #16c9f6 100%);
 }
@@ -151,9 +126,7 @@ select
 }
 
 
-
-
-/************************ Top 10 ************************/
+/************************ Card ************************/
 
 .top-teen
 {
@@ -175,7 +148,6 @@ select
     border-radius: 2px;
     transition: 0.3s ease;
     background: #fff;
-    margin-bottom: 5rem;
 }
 
 .box .img:after
@@ -205,17 +177,182 @@ select
 {
     border: 1px solid #16c9f6;
     border-radius: 100px;
-    margin: 2rem 2rem;
-    padding: 12px 35px;
-    outline: none;
-    font-size: 1rem;
+    /*new*/
+    margin: 1rem 0rem;
+    padding: 12px 40px;
+    outline: none !important;
+    /*end*/
+    font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.4;
     text-align: center;
     background: #16c9f6;
     text-decoration: none;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    color: #fff;
 }
+
+input[type=radio]
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*new*/
+.text-button
+{
+    display: flex;
+    justify-content: space-evenly !important;
+}
+
+.modal-title
+{
+    margin-left: auto;
+    margin-right: auto;
+    color: #16c9f6;
+}
+
+.contactus-button
+{
+
+    padding: 0px 0;
+    position: relative;
+}
+
+.modal-footer
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* width input fields */
+input[type=number] {
+    padding: 12px 20px;
+    margin: 0.7rem auto 3rem auto;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    direction: rtl;
+  }
+  
+  /* Set a style for all buttons */
+  .second-m-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .second-m-button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Center the image and position the close button */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+
+  .inside-modal
+  {
+      width: 40%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .modal-dialog
+  {
+      min-width: 70% !important;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 100%;
+
+  }
+  
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
+
+  input[type=radio]
+  {
+      margin-left: 1.3rem;
+  }
+
+
+/*end*/
 
 .box h1
 {
@@ -238,314 +375,91 @@ select
     margin-top: 20px;
 }
 
-/*new*/
-.text-button
+/************************ Card End ************************/
+
+
+
+
+
+
+/************************ Setting ************************/
+
+.header-extradiv
 {
-    display: flex;
-    justify-content: space-evenly !important;
-}
-
-.modal-title
-{
-    margin-left: auto;
-    margin-right: auto;
-    color: #16c9f6;
-}
-
-.contactus-button
-{
-
-    padding: 0px 0;
-    position: relative;
-}
-
-.modal-footer
-{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-/* width input fields */
-input[type=number] {
-    padding: 12px 20px;
-    margin: 0.7rem auto 3rem auto;
-    display: block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    direction: rtl;
-  }
-  
-  /* Set a style for all buttons */
-  .second-m-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .second-m-button:hover {
-    opacity: 0.8;
-  }
-  
-  /* Center the image and position the close button */
-  .imgcontainer {
+    width: 100%;
+    height: auto;
     text-align: center;
-    margin: 24px 0 12px 0;
+    padding: 50px;
     position: relative;
-  }
-  
-  .container {
-    padding: 16px;
-  }
-  
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
-  
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
+}
 
-  .inside-modal
-  {
-      width: 40%;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
-  }
 
-  .modal-dialog
-  {
-      min-width: 70% !important;
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 100%;
-
-  }
-  
-  /* The Close Button (x) */
-  .close {
+.header-extradiv:before
+{
+    content: "";
     position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-  }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-  }
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-  }
-
-  input[type=radio]
-  {
-      margin-left: 1.3rem;
-  }
-
-/*new*/
-.text-button
-{
-    display: flex;
-    justify-content: space-evenly !important;
+    top: 0%;
+    bottom: 0%;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    /*background: linear-gradient(330deg, #16c9f6 55%, #fff 0%);*/
 }
 
-.modal-title
+.Editing input
 {
-    margin-left: auto;
-    margin-right: auto;
-    color: #16c9f6;
-}
-
-.contactus-button
-{
-
-    padding: 0px 0;
-    position: relative;
-}
-
-.modal-footer
-{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-/* width input fields */
-input[type=number] {
-    padding: 12px 20px;
-    margin: 0.7rem auto 3rem auto;
     display: block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    direction: rtl;
-  }
-  
-  /* Set a style for all buttons */
-  .second-m-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .second-m-button:hover {
-    opacity: 0.8;
-  }
-  
-  /* Center the image and position the close button */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-  }
-  
-  .container {
-    padding: 16px;
-  }
-  
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
-  
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
+}
 
-  .inside-modal
-  {
-      width: 40%;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
-  }
+.card-row
+{
+    background: #fff;
+    justify-content: space-between;
+    padding: 3rem;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.50);
+    border-radius: 3rem;
+    align-items: center;
+}
 
-  .modal-dialog
-  {
-      min-width: 70% !important;
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 100%;
+.input {
+	background-color: #eee;
+	border: 1px solid rgba(0, 0, 0, 0.432);
+	padding: 12px 15px;
+	margin: 0.7rem 0;
+	width: 100%;
+	text-align: right;
+	font-size: 1.1rem;
+    border-radius: 50px;
+    outline: none;
+}
 
-  }
-  
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-  }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-  }
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-  }
+.input#file-input1
+{
+	display: none;
+}
 
-  input[type=radio]
-  {
-      margin-left: 1.3rem;
-  }
+.input.file-input1 + label
+{
+
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 0.7rem 0;
+	width: 100%;
+	text-align: right;
+	font-size: 1.1rem;
+}
+
+label
+{
+	margin: 2rem 2rem !important;
+    font-size: 1rem;
+}
 
 
-/************************ Top 10 End ************************/
+
+/************************ Setting End ************************/
+
 
 
 

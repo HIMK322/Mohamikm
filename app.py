@@ -136,7 +136,7 @@ def login():
             if person[0]["id"] == 16:
                 return redirect("/admin")
             else:
-                return redirect("/")
+                return redirect("/profile-edit")
 
         return render_template("login.html",error = error)
 
@@ -144,23 +144,46 @@ def login():
         return render_template("login.html",error = error)
 
 
-@app.route("/profile-edit")
+@app.route("/profile-edit", methods=["GET", "POST"])
+@login_required
 def profile():
+    if request.method== "POST" :
+    
+        name = request.form.get('name')
+        descrip = request.form.get('descrip')
+        number = request.form.get('number')
+        password = request.form.get('password')
+        email = request.form.get('email')
+        pic = request.files['pic']
+        
+        n = db.execute("SELECT * FROM lawyers WHERE id = ?", session["user_id"])
 
-    # if the person has not yet sign/log in redirect him
-    if session.get("user_id") is None:
-        return redirect("/login")
+        field = ['name','descrip','number','password','email']
+        values = [name,descrip,number,password,email]
+
+        for x in range (len(values)):
+            if values[x] == "":        
+                values[x] = n[0][field[x]]
+            elif x == 3 and  values[x] == "" :
+                values[3] = n[0]["password"]
+            elif x==3 and values != "":
+                values[3] = generate_password_hash(values[3])
+ 
+
+        if pic.filename != "": 
+            pic.save(n[0]["picture"])
+        
+        
+
+        db.execute("UPDATE lawyers SET name = ?, descrip = ?, number = ?, password = ? ,email =?  WHERE id = ? ", values[0] , values[1] , values[2] ,values[3], values[4] ,session["user_id"] ) 
+        
+        n = db.execute("SELECT * FROM lawyers WHERE id = ?", session["user_id"])
+        return render_template("edit.html", lawyer = n )
+
 
     else:
         n = db.execute("SELECT * FROM lawyers WHERE id = ?", session["user_id"])
-        return render_template("profile.html" , name=n[0]["name"] , email=n[0]["email"] , number=n[0]["number"], location=n[0]["address"])
- 
-@app.route("/profile/<id>")  
-def landing_page(id):
-
-        n = db.execute("SELECT * FROM lawyers WHERE id = ?", id)
-        return render_template("profile.html" , name=n[0]["name"] , email=n[0]["email"] , number=n[0]["number"], location=n[0]["address"])
-
+        return render_template("edit.html", lawyer = n )
 
 
 @app.route("/logout", methods=["GET", "POST"])
@@ -192,8 +215,7 @@ def requst(id):
         account_sid = 'AC0394b39ffb198e04993c2c61415e5d62' 
         auth_token = '1ea55549f5573f714465edf2f31c46f6' 
         client = Client(account_sid, auth_token) 
-        message = client.messages.create (from_="whatsapp:+14155238886", body=requst, to= "whatsapp:" + lawyer_number) 
-
+        message = client.messages.create (from_="+18705379497", body=requst, to= lawyer_number)  
         result =  db.execute("SELECT client_num FROM requset WHERE client_num = ? AND lawyer_id = ? ", number, id)
 
         if len(result) == 0 :
@@ -212,10 +234,10 @@ def search():
         city= request.form.get('city')
         rating_list=[]
         if city == "all":
-            result = db.execute("SELECT name, picture, total_rating, city FROM lawyers WHERE name LIKE ? AND verfied = 1  ", name)
+            result = db.execute("SELECT name, picture, total_rating, city,id FROM lawyers WHERE name LIKE ? AND verfied = 1  ", name)
      
         else :
-            result = db.execute("SELECT name, picture, total_rating ,city FROM lawyers WHERE name LIKE ? AND city = ? AND verfied = 1  ", name, city)          
+            result = db.execute("SELECT name, picture, total_rating ,city,id FROM lawyers WHERE name LIKE ? AND city = ? AND verfied = 1  ", name, city)          
         
         if len(result) == 0 :
             return render_template("lawy_err.html")
@@ -224,7 +246,7 @@ def search():
 
 
     else:
-        result = db.execute("SELECT name, picture,total_rating,city FROM lawyers WHERE verfied = 1 ")
+        result = db.execute("SELECT name, picture,total_rating,city,id FROM lawyers WHERE verfied = 1 ")
         return render_template("lawy-result.html",lawyer= result , len= len(result))
 
 
@@ -278,11 +300,15 @@ def review(id):
         number = request.form.get('number')
         result1 = db.execute("SELECT client_num FROM requset WHERE client_num = ? AND lawyer_id = ? ", number, id)
         result2 = db.execute("SELECT reviewer_num FROM review WHERE reviewer_num = ? AND lawyer_id = ? ", number, id)
+        result3 = db.execute("SELECT id FROM lawyers WHERE number = ? ", number)
 
-        if len(result1) == 1 and len(result2) == 0:
+        if  len(result3) != 0:
+            return render_template("review.html", id =id)
+        # lawyers can not review them selfess
+
+        elif len(result1) == 1 :
             review = request.form.get('rate')
-            details = request.form.get('descrip')
-            db.execute("INSERT INTO review (reviewer_num, lawyer_id, review, details) VALUES ( ?, ?, ?, ?)", number, id, review, details )
+            db.execute("INSERT INTO review (reviewer_num, lawyer_id, review) VALUES ( ?, ?, ?)", number, id, review)
             
             ratings=db.execute("SELECT review FROM review WHERE lawyer_id = ?" ,id)
             rating_sum = 0
@@ -293,16 +319,10 @@ def review(id):
 
             return redirect("/")
 
-        elif len(result2) != 0:
-            return render_template("review.html", id =id)
-            # do want modify
-
         elif  len(result1) != 1:
-            return render_template("review.html", id =id)
+            return redirect("/lawyers-search")
             # you need to send message first
-    else:
-        return render_template("review.html", id =id)
-
+        
 @app.route("/admin")
 @login_required
 def admin():
@@ -326,17 +346,20 @@ def accept(ids):
         unregister=db.execute("SELECT * FROM lawyers WHERE verfied = 0 LIMIT 1")
         return render_template("admin.html", result = unregister, len = len(unregister))
 
+    
+
        
-#show all unverfied users
+
 #show all verfied users
 #show the laws
 #update the the laws of tammez
+# spec search
 
 #laws txt
-#register in nav bar
 #cheack messaging for other numbers
 
 
-# find and len of the word so we highlight it
-
+# so here is the thing fisrt we make a login requerd then we use the sesion key so he can inter
+# there wont be a /<id> there will only be a page with different content 
+# using the good old bakaro taktics
 

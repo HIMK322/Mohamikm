@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/edit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>الاعدادات</title>
+</head>
+<body>
+
+        <!--*********************** Header part and Nav ***********************-->
+        <div class="header" id="topheader">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container">
+                    <img class="navbar-brand" src="/static/img/photo_2021-01-30_14-48-09-Recovered.png" style="width: 6rem;">
+                    <button class="navbar-toggler" style="outline: none;" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://mohamikm.herokuapp.com/login">تسجيل دخول للمحامي <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> قرارات محاكم التمييز<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://mohamikm.herokuapp.com/laws"> القانون العراقي<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://mohamikm.herokuapp.com/lawyers-search">المحامين <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="https://mohamikm.herokuapp.com/">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!--*********************** Header part end ***********************-->
+        
+            <!--*********************** Setting ***********************-->
+    <section class="header-extradiv">
+        <h1 class="mb-4" style="color: #16c9f6; text-align: center;">الاعدادات</h1>
+        <div class="container">
+            <div class="flex">
+                <div class="row card-row">
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <div class="box">
+                            <a class="img" href="#"><img src="{{lawyer[0]['picture']}}" class="img-fluidi img-thumbnail"></a>
+                            <h1>{{lawyer[0]['name']}}</h1>
+                            <p class="m-4">{{lawyer[0]["descrip"]}} </p>
+                            <!--new-->
+                            <div class="text-button">
+                                <div>
+                                    <!-- Button trigger modal -->
+                                    <button class="topteen-button" type="button" data-toggle="modal"
+                                        data-target="#exampleModalCenter">
+                                        مراسلة
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">ادخل جميع
+                                                        المعلومات ادناه</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <section class="contactus-button" id="contactid">
+                                                        <div class="">
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+                                                                    <form action="/action_page.php">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name= "name"
+                                                                                placeholder="ادخل اسمك" id="Username"
+                                                                                required autocomplete="off">
+                                                                        </div>
+
+                                                                        <form action="/action_page.php">
+                                                                            <div class="form-group">
+                                                                                <input type="tel" class="form-control" name ="number"
+                                                                                    placeholder="ادخل رقم هاتفك"
+                                                                                    id="email" required
+                                                                                    autocomplete="off">
+                                                                            </div>
+
+                                                                            <form action="/action_page.php">
+                                                                                <div class="form-group">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        placeholder="اسم الموضوع"
+                                                                                        id="text" required
+                                                                                        autocomplete="off">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control"
+                                                                                        placeholder="ادخل رسالتك📝"
+                                                                                        rows="4"
+                                                                                        id="comment"></textarea>
+                                                                                </div>
+                                                                            </form>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </section>
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="form-button"
+                                                        data-dismiss="modal">اغلاق</button>
+                                                    <button class="form-button"
+                                                        style="background: #16c9f6 !important; color: #fff !important; border: #fff;"
+                                                        type="submit">📤 ارسال</button>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div>
+                                    <button class="topteen-button"
+                                        onclick="document.getElementById('id01').style.display='block'"
+                                        style="width:auto;">تقييم</button>
+                                    <div id="id01" class="modal">
+                                        <div class="inside-modal">
+                                            <form class="modal-content animate" style="width: auto;"
+                                                action="/action_page.php" method="post">
+                                                <div class="imgcontainer">
+                                                    <span onclick="document.getElementById('id01').style.display='none'"
+                                                        class="close" title="Close Modal">&times;</span>
+                                                </div>
+                                                <div class="container">
+                                                    <label style="color: #16c9f6 ;" for="psw"><b>ادخل رقمك</b></label>
+                                                    <input type="tel" placeholder="ادخل الرقم" name="psw" required>
+                                                    <hr>
+                                                    <label style="color: #16c9f6 ;" class="mt-4 mb-4" for="psw"><b>قيم
+                                                            المحامي</b></label>
+                                                    <div class="raiting mb-4">
+                                                        <input type="radio" name="" id=""> 1
+                                                        <input type="radio" name="" id=""> 2
+                                                        <input type="radio" name="" id=""> 3
+                                                        <input type="radio" name="" id=""> 4
+                                                        <input type="radio" name="" id=""> 5
+                                                    </div>
+                                                    <button class="form-button mb-4"  style="background: #16c9f6 !important; color: #fff !important; border: #fff;"  onclick="myFunction()">قيم </button>
+                                                </div>
+
+                                                <div class="container" style="background-color:#f1f1f1;">
+                                                    <button class="second-m-button form-button" type="button"
+                                                        onclick="document.getElementById('id01').style.display='none'"
+                                                        class="cancelbtn">الغاء</button>
+                                                    <button class="second-m-button form-button"
+                                                        style="background: #16c9f6 !important; color: #fff !important; border: #fff;"
+                                                        type="submit">ارسال</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <form method="POST" enctype="multipart/form-data" action="/profile-edit">
+                        <div class="Editing">
+                            <input class="input" name="pic" accept="image/*" type="file" id="file-input1">
+                            <label for="file-input1">📥 تغيير الصورة الشخصية</label>
+                            
+                            <label for="">تغيير الاسم</label>
+                            <input class="mb-4 input" type="text" name="name" >
+                            
+                            <label for="">تغيير الوصف</label>
+                            <input class="mb-4 input" type="text" name="descrip" >
+                            
+                            <label for="">تغيير الرقم</label>
+                            <input class="mb-4 input" type="tel" name="number" >
+                            
+                            <label for="">تغيير الرمز السري</label>
+                            <input class="mb-4 input" type="text" name="password" >
+                            
+                            <label for="">تغيير البريد الاكتروني</label>
+                            <input class="mb-4 input" type="email" name="email">
+                            <button class="form-button"
+                            style="background: #16c9f6 !important; color: #fff !important; border: #fff;" type="submit">تحديث</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--*********************** Setting End ***********************-->
+
+    
+    
+
+        
+            <!--*********************** Contact Us ***********************-->
+
+    <section class="contactus" id="contactid">
+        <div class="container headings text-center">
+            <h1 class="text-center font-weight-bold mt-5" style="color:  #16c9f6;">تواصل معنا</h1>
+            <p class="pt-2 mb-4">🥰 هنا يمكننا مساعدتك اذا واجهت مشكلة في استخدام الموقع</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="ادخل اسمك" id="Username" required
+                                autocomplete="off">
+                        </div>
+
+                        <form action="/action_page.php">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="ادخل الايميل الخاص بك" id="email"
+                                    required autocomplete="off">
+                            </div>
+
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="اسم الموضوع" id="text" required
+                                        autocomplete="off">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="ادخل رسالتك📝" rows="4"
+                                        id="comment"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button class="form-button" type="submit">📤 ارسال</button>
+                                </div>
+                            </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--*********************** Contact Us End ***********************-->
+
+
+
+
+
+    <!--*********************** Upper footer ***********************-->
+
+    <section class="upper-footer" id="upperfooterid">
+        <div class="container headings text-center">
+            <h1 class="text-center mb-4" style="font-size: 1.5rem;"> 🤳 ارسل ايميلك لتصلك اخر التحديثات و الاخبار</h1>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">ارسال</span>
+                        </div>
+                        <input type="text" class="form-control upperfooter" placeholder="ايميلك الخاص">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!--*********************** Upper footer End ***********************-->
+
+
+        <!--*********************** footer ***********************-->
+        <footer class="footersection" id="footerfdiv">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-text col-lg-4 col-md-4 col-12 footer-div">
+                        <div>
+                            <h3>عن الموقع</h3>
+                            <p>محاميكم، يقدم لك خدمة قانونية من قبل محامين و مستشارين قانونيون على كفاءة عالية وخبرة
+                                ممتدة، وذلك عبر منصة الكترونية.</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-text col-lg-4 col-md-12 col-12 footer-div">
+                        <div>
+                            <h3>صفحات الموقع</h3>
+                            <li><a href="https://mohamikm.herokuapp.com/">الصفحة الرئيسية</a></li>
+                            <li><a href="https://mohamikm.herokuapp.com/lawyers-search">المحامين</a></li>
+                            <li><a href="https://mohamikm.herokuapp.com/laws">القوانين</a></li>
+                            <li><a href="#">خدماتنا</a></li>
+                            <li><a href="https://mohamikm.herokuapp.com/login">تسجيل دخول للمحامي</a></li>
+                        </div>
+                    </div>
+
+                    <div class="footer-text col-lg-4 col-md-4 col-12 footer-div">
+                        <div>
+                            <h3>البحث عن بعض الاخبار</h3>
+                            <p>هنا يمكنك البحث عن بعض الاخبار الخاصة بالقوانين و المحاكم وما يحدث</p>
+
+                            <div class="container news-main">
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">ارسال</span>
+                                            </div>
+                                            <input type="text" class="form-control upperfooter" placeholder="ايميلك الخاص">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-center">
+                    <p>copyright @2021 All rights reserved for (محاميكم) website</p>
+                </div>
+
+                <div class="scrolltop float-right">
+                    <i class="fa fa-arrow-up" onclick="topFunction()" id="myBtn"></i>
+                </div>
+            </div>
+        </footer>
+        <!--*********************** footer End ***********************-->
+
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        mybutton = document.getElementById("myBtn");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            }
+            else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop =0;
+        }
+
+        function myFunction() {
+            alert("الرقم الذي ادخلته غير صالح !");
+        }
+    </script>
+</body>
+</html>
