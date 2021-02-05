@@ -77,7 +77,7 @@
                 {% if "law_id" in result[i] %}<a href="https://mohamikm.herokuapp.com/law/{{ result[i]['law_id'] }}">{% endif %}
                 <div class="extra-div">
                     <h2>{{ result[i]["subject"] }}</h2>
-                    <p>{{ result[i]["description"] }}</p>
+                    <p style="font-size: 1.2rem;" class = "parag">{{ result[i]["description"] }}</p>
                 </div>
                 {% if "law_id" in result[i] %}</a>{% endif %}
                 {%endfor%}
